@@ -1,12 +1,16 @@
 package com.example.practicaconjuntomandelbrot;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
-
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
+import java.util.concurrent.Callable;
+import java.util.List;
+import java.util.ArrayList;
 
 public class MandelbrotRenderer implements Callable<WritableImage> {
     private int width;
@@ -57,6 +61,17 @@ public class MandelbrotRenderer implements Callable<WritableImage> {
     }
 
     private void calculateMandelbrot(int startRow, int endRow, PixelWriter pw) {
-        // Implementa la lógica de cálculo del conjunto de Mandelbrot aquí
+        for (int y = startRow; y < endRow; y++) {
+            for (int x = 0; x < width; x++) {
+                double x0 = map(x, 0, width, -2.5, 1.0);
+                double y0 = map(y, 0, height, -1.0, 1.0);
+                int color = MandelbrotCalculator.calculateMandelbrotColor(x0, y0);
+                pw.setColor(x, y, MandelbrotCalculator.getColorFromInt(color));
+            }
+        }
+    }
+
+    private double map(double value, double start1, double stop1, double start2, double stop2) {
+        return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
     }
 }

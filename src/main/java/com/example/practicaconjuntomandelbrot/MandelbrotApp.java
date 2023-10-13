@@ -6,14 +6,14 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Spinner;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.image.WritableImage;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 public class MandelbrotApp extends Application {
     private static final int WIDTH = 800;
@@ -58,3 +58,4 @@ public class MandelbrotApp extends Application {
         });
     }
 }
+

@@ -1,9 +1,10 @@
 package com.example.practicaconjuntomandelbrot;
 
+import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
 
 public class MandelbrotCalculator {
-    public int calculateMandelbrotColor(double x, double y) {
+    public static int calculateMandelbrotColor(double x, double y) {
         int maxIterations = 1000; // Número máximo de iteraciones
         double real = x;
         double imag = y;
@@ -25,10 +26,9 @@ public class MandelbrotCalculator {
         return maxIterations; // El punto está dentro del conjunto
     }
 
-    public Color getColorFromInt(int color) {
+    public static Color getColorFromInt(int color) {
         // Mapea el valor de color a un color específico según tu preferencia
         double hue = (color % 256) / 255.0; // Ajusta el rango de colores
         return Color.hsb(hue * 360, 1.0, 1.0);
     }
 }
-
